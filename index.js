@@ -3,7 +3,7 @@ const endPoint = "http://localhost:3000/api/v1/businesses"
 document.addEventListener('DOMContentLoaded', () => {
   getBusinesses()
 })
-
+  // initial fetch to grab all businesses from index controller
   function getBusinesses() {
     fetch(endPoint)
     .then(r => r.json())
