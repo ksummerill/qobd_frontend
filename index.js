@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const businessMarkup = `
           <div data-id=${business.id}>
             <h3>${business.attributes.name}</h3>
+            <p>${business.attributes.description}</p>
             <p>${business.attributes.category.name}</p>
             <p>${business.attributes.website}</p>
             </div>`;
@@ -40,6 +41,31 @@ document.addEventListener('DOMContentLoaded', () => {
     postFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId)
   }
 
-  function postFetchpostFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId) {
-    console.logpostFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId)
+  function postFetch(name, description, website, street_address, city, state, zipcode, category_id) {
+    // console.log(name, description, website, street_address, city, state, zipcode, category_id)
+
+    const bodyData = {name, description, website, street_address, city, state, zipcode, category_id}
+
+    fetch(endPoint, {
+      // POST request
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(business => {
+      console.log(business);
+      const businessData = business.data.attributes
+      // render JSON response
+      const businessMarkup = `
+      <div data-id=${business.id}>
+        <h3>${businessData.name}</h3>
+        <p>${businessData.description}</p>
+        <p>${businessData.website}</p>
+        <p>${businessData.category.name}</p>
+      </div>
+      <br><br>`;
+
+      document.querySelector('#business-container').innerHTML += businessMarkup;
+    })
   }
