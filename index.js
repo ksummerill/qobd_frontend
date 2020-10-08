@@ -39,3 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryId = parseInt(document.querySelector('#categories').value)
     postFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId)
   }
+
+  function postFetchpostFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId) {
+    console.logpostFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId)
+  }
