@@ -13,21 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(r => r.json())
     .then(businesses => {
       businesses.data.forEach(business => {
-        render(business)
+        const newBusiness = new Business(business.id, business.attributes)
+
+        document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
+
       })
     })
-  }
-
-  function render(business) {
-    const businessMarkup = `
-      <div data-id=${business.id}>
-        <h3>${business.attributes.name}</h3>
-        <p>${business.attributes.description}</p>
-        <p>${business.attributes.category.name}</p>
-        <p>${business.attributes.website}</p>
-        </div>`;
-
-      document.querySelector('#business-container').innerHTML += businessMarkup
   }
 
   function createFormHandler(e) {
@@ -56,9 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(response => response.json())
     .then(business => {
-      console.log(business);
-      const businessData = business.data
-      // render JSON response
-      render(businessData)
+
+      const newBusiness = new Business(business.data.id, business.data.attributes)
+
+      document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
+
     })
   }
