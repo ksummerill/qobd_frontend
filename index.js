@@ -13,19 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(r => r.json())
     .then(businesses => {
       businesses.data.forEach(business => {
-        const businessMarkup = `
-          <div data-id=${business.id}>
-            <h3>${business.attributes.name}</h3>
-            <p>${business.attributes.description}</p>
-            <p>${business.attributes.category.name}</p>
-            <p>${business.attributes.website}</p>
-            </div>`;
-
-          document.querySelector('#business-container').innerHTML += businessMarkup
-
-      });
-
+        render(business)
+      })
     })
+  }
+
+  function render(business) {
+    const businessMarkup = `
+      <div data-id=${business.id}>
+        <h3>${business.attributes.name}</h3>
+        <p>${business.attributes.description}</p>
+        <p>${business.attributes.category.name}</p>
+        <p>${business.attributes.website}</p>
+        </div>`;
+
+      document.querySelector('#business-container').innerHTML += businessMarkup
   }
 
   function createFormHandler(e) {
@@ -55,17 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.json())
     .then(business => {
       console.log(business);
-      const businessData = business.data.attributes
+      const businessData = business.data
       // render JSON response
-      const businessMarkup = `
-      <div data-id=${business.id}>
-        <h3>${businessData.name}</h3>
-        <p>${businessData.description}</p>
-        <p>${businessData.website}</p>
-        <p>${businessData.category.name}</p>
-      </div>
-      <br><br>`;
-
-      document.querySelector('#business-container').innerHTML += businessMarkup;
+      render(businessData)
     })
   }
