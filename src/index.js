@@ -1,9 +1,10 @@
 const endPoint = "http://localhost:3000/api/v1/businesses"
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM is loaded");
   getBusinesses()
 
-  const createBusinessForm = document.querySelector("#create-syllabus-form")
+  const createBusinessForm = document.querySelector("#create-business-form")
 
   createBusinessForm.addEventListener("submit", (e) => createFormHandler(e))
 })
@@ -54,3 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
   }
+
+
+    // event listener for create form action
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   // fetch and load syllabi
+    //   getBusinesses()
+    //   // listen for 'submit' event on form and handle data
+    //   const createBusinessForm = document.querySelector("#create-button")
+    //   createBusinessForm.addEventListener("submit", (e) => createFormHandler(e))
+    //   // listen for 'click' event on syllabus container
+    //   const businessContainer = document.querySelector('#business-container')
+    //   businessContainer.addEventListener('click', e => {
+    //     console.log('clicked');
+    //   });
+    // })

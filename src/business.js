@@ -1,8 +1,6 @@
 class Business {
   constructor(business, businessAttributes) {
-    // debugger
     this.id = business.id;
-    // debugger
     this.name = businessAttributes.name;
     this.description = businessAttributes.description;
     this.category = businessAttributes.category;
@@ -17,6 +15,7 @@ class Business {
         <p>${this.description}</p>
         <p>${this.category.name}</p>
         <p>${this.website}</p>
+        <button data-id=${this.id}>edit</button>
       </div>
       <br><br>`;
   }
