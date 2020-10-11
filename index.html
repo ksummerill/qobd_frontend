@@ -44,71 +44,96 @@
 
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">Cover</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a>
-      </nav>
-    </div>
-  </header>
+      <!-- START NAVIGATION -->
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Cover</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Contact</a>
+          </nav>
+        </div>
+      </header>
+      <!-- END NAVIGATION -->
 
   <main role="main" class="inner cover" id="business-container">
     <h1 class="cover-heading">Queer-Owned Business Directory</h1>
     <p class="lead">Search by name or category for a queer-owned business.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p>
+    <!-- INSERT SEARCH BAR HERE -->
+    <!-- INSERT CATEOGRY SEARCH HERE -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Add new business
+    </button>
 
-      <form id="create-business-form">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputName">Business Name</label>
-            <input type="name" class="form-control" id='input-name' aria-describedby="emailHelp">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add new business</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="form-group col-md-6">
-            <label for="inputDescription">Description</label>
-            <textarea class="form-control" id='input-description' rows="3"></textarea>
-          </div>
-          <div class="form-group col-md-12">
-            <label for="inputWebsite">Website</label>
-            <input type="website" class="form-control" id='input-website' aria-describedby="emailHelp">
-          </div>
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="inputStreetAddress">Street Address</label>
-            <input type="street_address" class="form-control" id='input-street_address' aria-describedby="emailHelp">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputCity">City</label>
-            <input type="city" class="form-control" id='input-city' aria-describedby="emailHelp">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputState">State</label>
-            <input type="state" class="form-control" id='input-state' aria-describedby="emailHelp">
-          </div>
-        <div class="form-group col-md-3">
-          <label for="inputZip">Zipcode</label>
-          <input type="zipcode" class="form-control" id='input-zipcode' aria-describedby="emailHelp">
-        </div>
-        <!-- Category dropdown option -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Category
-          </button>
-          <div class="dropdown-menu" id="categories" name="categories">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div>
+          <div class="modal-body">
 
-        <div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <form id="create-business-form">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputName">Business Name</label>
+                  <input type="name" class="form-control" id='input-name' aria-describedby="emailHelp">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputDescription">Description</label>
+                  <textarea class="form-control" id='input-description' rows="3"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputWebsite">Website</label>
+                  <input type="website" class="form-control" id='input-website' aria-describedby="emailHelp">
+                </div>
+                <!-- Category dropdown option -->
+                <div class="form-group col-md-6">
+                  <label for="exampleFormControlSelect1">Category</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="1">Restaurant</option>
+                    <option value="2">Bar</option>
+                    <option value="3">Retail</option>
+                  </select>
+                </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputStreetAddress">Street Address</label>
+                  <input type="street_address" class="form-control" id='input-street_address' aria-describedby="emailHelp">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">City</label>
+                  <input type="city" class="form-control" id='input-city' aria-describedby="emailHelp">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputState">State</label>
+                  <input type="state" class="form-control" id='input-state' aria-describedby="emailHelp">
+                </div>
+              <div class="form-group col-md-3">
+                <label for="inputZip">Zipcode</label>
+                <input type="zipcode" class="form-control" id='input-zipcode' aria-describedby="emailHelp">
+              </div>
+            </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+
+            </form>
+
         </div>
-      </form>
+      </div>
+    </div>
+
 
   </main>
 
