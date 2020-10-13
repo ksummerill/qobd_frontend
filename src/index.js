@@ -2,11 +2,9 @@ const endPoint = "http://localhost:3000/api/v1/businesses"
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM is loaded");
-  getBusinesses()
+  // choosing not to call getBusinesses() since I don't want those to load on the homepage
+  // // getBusinesses()
 
-  const createBusinessForm = document.querySelector("#create-business-form")
-
-  createBusinessForm.addEventListener("submit", (e) => createFormHandler(e))
 })
   // initial fetch to grab all businesses from index controller
   function getBusinesses() {
@@ -15,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(businesses => {
       businesses.data.forEach(business => {
         const newBusiness = new Business(business.id, business.attributes)
-
         document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
-
       })
     })
   }
+
+  // createFormHandler and postFetch both happen in the modal
 
   function createFormHandler(e) {
     e.preventDefault()
@@ -32,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const stateInput = document.querySelector('#input-state').value
     const zipcodeInput = document.querySelector('#input-zipcode').value
     const categoryId = parseInt(document.querySelector('#categories').value)
+    // debugger
     postFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId)
   }
 
   function postFetch(name, description, website, street_address, city, state, zipcode, category_id) {
-    // console.log(name, description, website, street_address, city, state, zipcode, category_id)
 
     const bodyData = {name, description, website, street_address, city, state, zipcode, category_id}
 
@@ -49,24 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.json())
     .then(business => {
 
+      // render JSON response
       const newBusiness = new Business(business.data.id, business.data.attributes)
-
       document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
 
     })
   }
 
-
-    // event listener for create form action
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   // fetch and load syllabi
-    //   getBusinesses()
-    //   // listen for 'submit' event on form and handle data
-    //   const createBusinessForm = document.querySelector("#create-button")
-    //   createBusinessForm.addEventListener("submit", (e) => createFormHandler(e))
-    //   // listen for 'click' event on syllabus container
-    //   const businessContainer = document.querySelector('#business-container')
-    //   businessContainer.addEventListener('click', e => {
-    //     console.log('clicked');
-    //   });
-    // })
+  // function gets fired on submit of the form to save a new business
+  function saveNewBusiness() {
+    // event listener and handler for create business form
+    const createBusinessForm = document.querySelector("#create-business-form")
+    createBusinessForm.addEventListener("click", (e) => createFormHandler(e))
+  }

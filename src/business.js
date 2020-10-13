@@ -8,6 +8,8 @@ class Business {
     Business.all.push(this);
   }
 
+  // this will eventually need to be called only when a business object is found by searching
+  // right now, each new business added gets added to the homepage
   renderBusinessCard() {
     return `
       <div data-id=${this.id}>
