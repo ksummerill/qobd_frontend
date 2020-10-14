@@ -53,6 +53,11 @@ label {
   text-shadow: none;
 }
 
+/* search bar */
+.active-cyan-4 input[type=text]:focus:not([readonly]) {
+  border: 3px solid #4dd0e1;
+  box-shadow: 0 0 0 1px #4dd0e1;
+}
 
 /*
  * Header

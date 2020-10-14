@@ -22,6 +22,10 @@ class Business {
       <br><br>`;
   }
 
+  // static findBusinessByName(name) {
+  //   return this.all.find(business => business.name === name);
+  // }
+
 }
 
 Business.all = [];

@@ -2,11 +2,53 @@ const endPoint = "http://localhost:3000/api/v1/businesses"
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM is loaded");
-  // choosing not to call getBusinesses() since I don't want those to load on the homepage
-  // // getBusinesses()
 
+  // fetch business from user inputted search; listen to search bar submit
+  // function getBiz() {
+
+    const searchBar = document.querySelector('#mySearch')
+    searchBar.addEventListener('click', e => {
+      console.log('clicked');
+    })
+
+    searchBar.addEventListener('change', e => {
+      submitSearch(e.target.value);
+    })
+
+    function submitSearch(searchValue) {
+      searchValue = searchValue.toLowerCase()
+    fetch(endPoint)
+    .then(r => r.json())
+    .then(businesses => {
+      // businesses.data is an array of objects - businesses.data[0].attributes.name gets me the name of
+      // the first business in my array of business objects
+      const searchedBusiness = businesses.data.find(b => {
+          if (b.attributes.name.toLowerCase() === searchValue) {
+            return true
+          }
+        })
+        console.log(searchedBusiness)
+      })
+    }
 })
-  // initial fetch to grab all businesses from index controller
+
+  // fetch business from user inputted search; listen to search bar submit
+//   function getBiz() {
+//
+//     const search = document.querySelector('#search-name')
+//     search.addEventListener('click', e => {
+//       console.log('clicked');
+//
+//     // fetch(endPoint)
+//     // .then(r => r.json())
+//     // .then(businesses => {
+//     //   const searchedBusiness = businesses.data.find(business => business.name === name);
+//     //   debugger
+//     //     document.querySelector('#business-container').innerHTML += searchedBusiness.renderBusinessCard();
+//     //   })
+//     })
+// }
+  // fetch to grab all businesses from index controller
   function getBusinesses() {
     fetch(endPoint)
     .then(r => r.json())
