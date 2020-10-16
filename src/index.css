@@ -48,10 +48,11 @@ label {
   text-shadow: none;
 }
 
-#exampleModal {
+#exampleModal, #my_modal {
   color: #000;
   text-shadow: none;
 }
+
 
 /* search bar */
 .active-cyan-4 input[type=text]:focus:not([readonly]) {
