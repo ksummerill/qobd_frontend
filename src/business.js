@@ -8,8 +8,7 @@ class Business {
     Business.all.push(this);
   }
 
-  // this will eventually need to be called only when a business object is found by searching
-  // right now, each new business added gets added to the homepage
+  // use this to show all businesses in a specific category??
   renderBusinessCard() {
     return `
       <div data-id=${this.id}>
@@ -21,10 +20,6 @@ class Business {
       </div>
       <br><br>`;
   }
-
-  // static findBusinessByName(name) {
-  //   return this.all.find(business => business.name === name);
-  // }
 
 }
 

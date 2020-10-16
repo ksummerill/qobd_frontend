@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM is loaded");
 
   // fetch business from user inputted search; listen to search bar submit
-  // function getBiz() {
 
     const searchBar = document.querySelector('#mySearch')
     searchBar.addEventListener('click', e => {
@@ -28,26 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         console.log(searchedBusiness)
+        showBusiness(searchedBusiness);
       })
     }
-})
 
-  // fetch business from user inputted search; listen to search bar submit
-//   function getBiz() {
-//
-//     const search = document.querySelector('#search-name')
-//     search.addEventListener('click', e => {
-//       console.log('clicked');
-//
-//     // fetch(endPoint)
-//     // .then(r => r.json())
-//     // .then(businesses => {
-//     //   const searchedBusiness = businesses.data.find(business => business.name === name);
-//     //   debugger
-//     //     document.querySelector('#business-container').innerHTML += searchedBusiness.renderBusinessCard();
-//     //   })
-//     })
-// }
+    // shows modal with found business data
+    function showBusiness(b) {
+      let data = b
+      $(".modal-header").html(`<h4>${data.attributes.name}</h4>`)
+      $(".modal-body").html(
+        `
+          <p>${data.attributes.description}</p>
+          <p>${data.attributes.category.name}</p>
+          <a href="${data.attributes.website}" class="btn btn-primary">${data.attributes.website}</a>
+        `
+      );
+      $("#my_modal").modal("show")
+      };
+
+});
+
+
   // fetch to grab all businesses from index controller
   function getBusinesses() {
     fetch(endPoint)

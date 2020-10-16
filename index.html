@@ -60,7 +60,7 @@
   <main role="main" class="inner cover" id="business-container">
     <h1 class="cover-heading">Queer-Owned Business Directory</h1>
     <p class="lead">Search by name or category for a queer-owned business.</p>
-    <!-- INSERT SEARCH BAR HERE -->
+
     <!-- Search form -->
     <div class="active-cyan-3 active-cyan-4 mb-4">
       <input class="form-control" id="mySearch" type="text" placeholder="Search" aria-label="Search">
@@ -71,7 +71,7 @@
       Add new business
     </button>
 
-    <!-- Modal -->
+    <!-- Modal for new business form -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -133,11 +133,32 @@
                 <button type="button" onclick="saveNewBusiness()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Save changes</button>
               </div>
             </form>
-
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- END Modal for new business form -->
 
+  <!-- new modal for searched business -->
+  <div class="modal" id="my_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal for searched business -->
+
+  <!-- category search -->
+
+  <!-- end category search -->
 
   </main>
 
@@ -146,6 +167,6 @@
       <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
     </div>
   </footer>
-</div>
+
 </body>
 </html>
