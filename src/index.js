@@ -2,12 +2,12 @@ const endPoint = "http://localhost:3000/api/v1/businesses"
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM is loaded");
+  // getBusinesses();
 
   // fetch business from user inputted search; listen to search bar submit
 
     const searchBar = document.querySelector('#mySearch')
     searchBar.addEventListener('click', e => {
-      console.log('clicked');
     })
 
     searchBar.addEventListener('change', e => {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return true
           }
         })
-        console.log(searchedBusiness)
+        // console.log(searchedBusiness)
         showBusiness(searchedBusiness);
       })
     }
@@ -45,6 +45,26 @@ document.addEventListener('DOMContentLoaded', () => {
       $("#my_modal").modal("show")
       };
 
+      // event listener for category search buttons
+      const categoryButton = document.querySelector('#restaurant-category')
+      categoryButton.addEventListener('click', e => {
+        console.log('clicked');
+      })
+
+      // WORKING HERE TO GET CATEGORY SEARCH WORKING
+      // fetch to grab all businesses by category
+      function getBusinesses() {
+        fetch(endPoint)
+        .then(r => r.json())
+        .then(businesses => {
+          console.log(businesses)
+          businesses.data.forEach(business => {
+            const newBusiness = new Business(business.id, business.attributes)
+            document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
+          })
+        })
+      }
+
 });
 
 
@@ -60,6 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+
+
   // createFormHandler and postFetch both happen in the modal
 
   function createFormHandler(e) {
@@ -72,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stateInput = document.querySelector('#input-state').value
     const zipcodeInput = document.querySelector('#input-zipcode').value
     const categoryId = parseInt(document.querySelector('#categories').value)
-    // debugger
+
     postFetch(nameInput, descriptionInput, websiteInput, streetAddressInput, cityInput, stateInput, zipcodeInput, categoryId)
   }
 
@@ -96,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  // function gets fired on submit of the form to save a new business
+  // function gets fired on submit of the form to save a new business, passing the entered data to createFormHandler
   function saveNewBusiness() {
     // event listener and handler for create business form
     const createBusinessForm = document.querySelector("#create-business-form")
