@@ -61,21 +61,21 @@
     <h1 class="cover-heading">Queer-Owned Business Directory</h1>
     <p class="lead">Search by name or category for a queer-owned business.</p>
 
-    <!-- Search form -->
+    <!-- Open Search bar -->
     <div class="active-cyan-3 active-cyan-4 mb-4">
       <input class="form-control" id="mySearch" type="text" placeholder="Search" aria-label="Search">
     </div>
     <!-- INSERT CATEOGRY SEARCH HERE -->
-    <div>
-      <button type="button" class="btn btn-light btn-sm" id="restaurant-category">Restaurants</button>
-      <button type="button" class="btn btn-light btn-sm">Bars</button>
-      <button type="button" class="btn btn-light btn-sm">Retail</button>
-      <button type="button" class="btn btn-light btn-sm">Hair Salons</button>
-      <button type="button" class="btn btn-light btn-sm">Barber Shops</button>
-      <button type="button" class="btn btn-light btn-sm">Outdoor</button>
-      <button type="button" class="btn btn-light btn-sm">Clothing</button>
-      <button type="button" class="btn btn-light btn-sm">Organization</button>
-      <button type="button" class="btn btn-light btn-sm">Social Group</button>
+    <div id="category-buttons">
+      <button type="button" class="btn btn-light btn-sm" id="1">Restaurants</button>
+      <button type="button" class="btn btn-light btn-sm" id="2">Bars</button>
+      <button type="button" class="btn btn-light btn-sm" id="3">Retail</button>
+      <button type="button" class="btn btn-light btn-sm" id="4">Hair Salons</button>
+      <button type="button" class="btn btn-light btn-sm" id="5">Barber Shops</button>
+      <button type="button" class="btn btn-light btn-sm" id="6">Outdoor</button>
+      <button type="button" class="btn btn-light btn-sm" id="7">Clothing</button>
+      <button type="button" class="btn btn-light btn-sm" id="8">Organization</button>
+      <button type="button" class="btn btn-light btn-sm" id="9">Social Group</button>
 
     </div><br>
     <!-- Button trigger modal -->
@@ -170,7 +170,25 @@
   </div>
   <!-- end modal for searched business -->
 
-  <!-- category search -->
+  <!-- category search scrollable modal -->
+
+  <div class="modal" id="category-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="category-modal-header">
+          <!-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="category-modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- end category search -->
 
