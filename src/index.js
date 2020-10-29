@@ -1,7 +1,10 @@
 const endPoint = "http://localhost:3000/api/v1/businesses"
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("DOM is loaded");
+  // clear modal after close
+  // $(".modal").on('hidden.bs.modal', function() {
+  //       $(".modal-body").html("")
+  //   });
   // getBusinesses();
 
   // fetch business from user inputted search; listen to search bar submit
@@ -127,9 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // render JSON response
       const newBusiness = new Business(business.data.id, business.data.attributes)
-      // DO SOMETHING HERE TO SHOW THE BUSINESS AFTER IT'S CREATED (THROW IT IN A MODAL?)
-      // document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
-
+      newBusiness.renderNewBusiness();
     })
   }
 

@@ -9,18 +9,20 @@ class Business {
   }
 
   // use this to show all businesses in a specific category??
-  renderBusinessCard() {
-    return `
+  renderNewBusiness() {
+    $(".modal-body").html(
+      `
       <div data-id=${this.id}>
         <h3>${this.name}</h3>
         <p>${this.description}</p>
         <p>${this.category.name}</p>
         <p>${this.website}</p>
-        <button data-id=${this.id}>edit</button>
       </div>
-      <br><br>`;
+      `
+      );
+      $("#my_modal").modal("show")
+      };
   }
 
-}
 
 Business.all = [];
