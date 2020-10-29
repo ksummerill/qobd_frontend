@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // getBusinesses();
 
   // fetch business from user inputted search; listen to search bar submit
-
     const searchBar = document.querySelector('#mySearch')
     searchBar.addEventListener('click', e => {
     })
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return true
           }
         })
-        // console.log(searchedBusiness)
         showBusiness(searchedBusiness);
       })
     }
@@ -48,88 +46,40 @@ document.addEventListener('DOMContentLoaded', () => {
       // event listener for category search buttons
       // listen for all category buttons. When one is selected, grab that div id and pass to fetch (not sure on this last part)
       const categoryButton = document.querySelector('#category-buttons')
-      categoryButton.addEventListener('click', e => {
-        console.log('clicked');
-        const categorySelected = e.target.id
-        getBusinessByCategory(categorySelected);
-        // This is passing the correct id to the fetch function
+        categoryButton.addEventListener('click', e => {
+          const categorySelected = e.target.textContent
+
+          getBusinessByCategory(categorySelected);
       })
 
-      // fetch to grab all businesses by category
+      // fetch to grab all businesses
       function getBusinessByCategory(selectedCategory) {
-        console.log(selectedCategory)
         fetch(endPoint)
-        // fetch(`http://localhost:3000/api/v1/categories/${selectedCategoryId}/businesses`)
         .then(r => r.json())
         .then(businesses => {
-          console.log(businesses)
 
-          // find all businesses that match the passed-in category
-          // businesses.data[0].attributes.category.id gives me the correct category_id
-          let filteredArray = businesses.data.filter(b => b.attributes.category.name === "Restaurants");
+          // find all businesses that match the passed-in category and send to a function to display
+          // searchedCategory will return an array of objects (since filter returns an array)
+          const searchedCategory = businesses.data.filter(b => b.attributes.category.name === selectedCategory)
+                displayBusinessesByCategory(searchedCategory)
+            })
+        }
 
-          console.log(selectedCategory);
-          // displayBusinessesByCategory(searchedCategory)
-          console.log(filteredArray);
-// debugger
-        })
-      }
-
-      function displayBusinessesByCategory(category) {
-        console.log(category);
-        $(".category-modal-header").html(`<h4>${category.attributes.category.name}</h4>`)
-        $(".category-modal-body").html(
-          `
-            <p>${category.attributes.name}</p>
-            <p>${category.attributes.description}</p>
-            <a href="${category.attributes.website}" class="btn btn-primary">${category.attributes.website}</a>
-          `
-        );
-        $("#category-modal").modal("show")
-      };
+        function displayBusinessesByCategory(newCategoryArray) {
+        // pass this new array through forEach to display in the modal
+          const newArray = []
+          newCategoryArray.forEach(b => {
+            newArray.push(`
+              <h2>${b.attributes.name}</h2>
+              <p>${b.attributes.description}</p>
+              <a href="${b.attributes.website}" class="btn btn-primary">${b.attributes.website}</a>
+            `)
+          })
+          $(".category-modal-body").html(newArray)
+          $("#category-modal").modal("show");
+        }
 
 })
-
-
-
-        // // what if I... take the businesses
-        //   let filteredArray = businesses.data.filter(b => b.attributes.category.name === "Restaurants")
-        //   // showAllCategoriedBusinesses(filteredArray);
-        //   console.log(filteredArray)
-        //
-        //   filteredArray.forEach(b => {
-        //     // debugger
-        //
-        //     $(".category-modal-header").html(`<h4>${b.attributes.category.name}</h4>`)
-        //     $(".category-modal-body").html(
-        //       `
-        //         <p>${b.attributes.name}</p>
-        //         <p>${b.attributes.description}</p>
-        //         <a href="${b.attributes.website}" class="btn btn-primary">${b.attributes.website}</a>
-        //       `
-        //     );
-        //     $("#category-modal").modal("show")
-        //     })
-        //
-        // })
-
-      // function showAllCategoriedBusinesses(businesses) {
-      //   businesses.data.forEach(b => {
-      //
-      //     $(".category-modal-header").html(`<h4>${b.attributes.category.name}</h4>`)
-      //     $(".category-modal-body").html(
-      //       `
-      //         <p>${b.attributes.name}</p>
-      //         <p>${b.attributes.description}</p>
-      //         <a href="${b.attributes.website}" class="btn btn-primary">${b.attributes.website}</a>
-      //       `
-      //     );
-      //     $("#category-modal").modal("show")
-      //     })
-      //     // debugger
-      //   };
-
-
 
 
   // fetch to grab all businesses from index controller
@@ -177,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // render JSON response
       const newBusiness = new Business(business.data.id, business.data.attributes)
-      document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
+      // DO SOMETHING HERE TO SHOW THE BUSINESS AFTER IT'S CREATED (THROW IT IN A MODAL?)
+      // document.querySelector('#business-container').innerHTML += newBusiness.renderBusinessCard();
 
     })
   }
