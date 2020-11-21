@@ -69,16 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function displayBusinessesByCategory(newCategoryArray) {
-        // pass this new array through forEach to display in the modal
+          // sort based on the name of the business
+          const alpha = newCategoryArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
           const newArray = []
+          // pass this new array through forEach to display in the modal
           newCategoryArray.forEach(b => {
             newArray.push(`
               <h2>${b.attributes.name}</h2>
               <p>${b.attributes.description}</p>
-              <a href="${b.attributes.website}" class="btn btn-primary">${b.attributes.website}</a>
+              <a href="${b.attributes.website}" class="btn btn-primary">${b.attributes.website}</a><br><br>
             `)
           })
-          $(".category-modal-body").html(newArray)
+          $(".category-modal-body").html(newArray);
           $("#category-modal").modal("show");
         }
 
