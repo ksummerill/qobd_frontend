@@ -13,6 +13,7 @@
     <!-- Bootstrap-4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+
     <!-- JS Project tags -->
     <script type="text/javascript" src="src/business.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
@@ -40,6 +41,8 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="src/index.css" rel="stylesheet">
+
+
   </head>
 
   <body class="text-center">
@@ -143,7 +146,7 @@
   <!-- END Modal for new business form -->
 
   <!-- new modal for searched business -->
-  <div class="modal" id="my_modal">
+  <div class="modal fade" id="my_modal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -151,7 +154,7 @@
         <div class="modal-body">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" onclick="clearModal()" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -160,7 +163,7 @@
 
   <!-- category search scrollable modal -->
 
-  <div class="modal" id="category-modal">
+  <div class="modal fade" id="category-modal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="category-modal-header">

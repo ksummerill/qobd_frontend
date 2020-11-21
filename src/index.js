@@ -1,11 +1,6 @@
 const endPoint = "http://localhost:3000/api/v1/businesses"
 
 document.addEventListener('DOMContentLoaded', () => {
-  // clear modal after close
-  // $(".modal").on('hidden.bs.modal', function() {
-  //       $(".modal-body").html("")
-  //   });
-  // getBusinesses();
 
   // fetch business from user inputted search; listen to search bar submit
     const searchBar = document.querySelector('#mySearch')
@@ -35,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // shows modal with found business data
     function showBusiness(b) {
       let data = b
-      $(".modal-header").html(`<h4>${data.attributes.name}</h4>`)
-      $(".modal-body").html(
+      $("#my_modal .modal-header").html(`<h4>${data.attributes.name}</h4>`)
+      $("#my_modal .modal-body").html(
         `
           <p>${data.attributes.description}</p>
           <p>${data.attributes.category.name}</p>
@@ -44,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `
       );
       $("#my_modal").modal("show")
+      $("#mySearch").val('')
       };
+
 
       // event listener for category search buttons
       // listen for all category buttons. When one is selected, grab that div id and pass to fetch (not sure on this last part)
@@ -88,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // fetch to grab all businesses from index controller
+  // not in use at the moment, but I may want this functionality down the line
   function getBusinesses() {
     fetch(endPoint)
     .then(r => r.json())
@@ -102,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // createFormHandler and postFetch both happen in the modal
-
   function createFormHandler(e) {
     e.preventDefault()
     const nameInput = document.querySelector('#input-name').value
@@ -142,3 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const createBusinessForm = document.querySelector("#create-business-form")
     createBusinessForm.addEventListener("click", (e) => createFormHandler(e))
   }
+
+  // clear modal after close
+  function clearModal() {
+    $("#my_modal .modal-header").html("");
+    $("#my_modal .modal-body").html("");
+  };
