@@ -67,7 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function displayBusinessesByCategory(newCategoryArray) {
           // sort based on the name of the business
-          const alpha = newCategoryArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
+          newCategoryArray.sort(function(a, b) {
+              var firstName = a.attributes.name.toUpperCase();
+              var secondName = b.attributes.name.toUpperCase();
+              return (firstName < secondName) ? -1 : (firstName > secondName) ? 1 : 0;
+          });
+
           const newArray = []
           // pass this new array through forEach to display in the modal
           newCategoryArray.forEach(b => {
